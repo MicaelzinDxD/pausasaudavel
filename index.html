@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pausa Saudável - ODS 3</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones gratuitos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Conteúdo do App -->
+    <div class="app-content">
+        
+        <!-- Cabeçalho Fixo -->
+        <header class="top-bar">
+            <h1>Pausa Saudável</h1>
+            <p>Seu bem-estar em 1º lugar</p>
+        </header>
+
+        <!-- ABA 1: Hidratação -->
+        <section id="tab-agua" class="tab-content active">
+            <div class="card">
+                <h2><i class="fa-solid fa-droplet icon-blue"></i> Calculadora de Água</h2>
+                <p class="subtitle">Descubra sua meta diária ideal</p>
+                
+                <div class="input-group">
+                    <input type="number" id="inputPeso" placeholder="Seu peso (Kg)">
+                    <button class="btn btn-blue" onclick="calcularAgua()">Calcular Meta</button>
+                </div>
+                
+                <div id="resultadoAgua" class="resultado-box hidden">
+                    <h3 id="textoMeta"></h3>
+                    <p id="textoCopos"></p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABA 2: Cronômetro de Pausas -->
+        <section id="tab-timer" class="tab-content">
+            <div class="card text-center">
+                <h2><i class="fa-solid fa-stopwatch icon-orange"></i> Temporizador</h2>
+                <p class="subtitle">Evite a fadiga visual e corporal</p>
+                
+                <div class="timer-display" id="tempoDisplay">25:00</div>
+                <p class="timer-status" id="statusTimer">Modo Foco (Trabalho)</p>
+                
+                <div class="btn-group">
+                    <button class="btn btn-green" onclick="iniciarTimer(25)">Foco (25m)</button>
+                    <button class="btn btn-orange" onclick="iniciarTimer(5)">Pausa (5m)</button>
+                </div>
+                <button class="btn btn-red mt-10" onclick="pararTimer()">Parar</button>
+            </div>
+        </section>
+
+        <!-- ABA 3: Ergonomia e Alongamentos -->
+        <section id="tab-exercicios" class="tab-content">
+            <div class="card">
+                <h2><i class="fa-solid fa-person-walking icon-green"></i> Guia de Alongamento</h2>
+                <p class="subtitle">Escolha o seu perfil de trabalho:</p>
+                
+                <!-- Botões para trocar perfil -->
+                <div class="btn-group">
+                    <button class="btn btn-outline" onclick="mostrarPerfil('ti')">💻 Uso de Telas</button>
+                    <button class="btn btn-outline" onclick="mostrarPerfil('camareira')">🧹 Esforço Físico</button>
+                </div>
+
+                <!-- Perfil TI -->
+                <div id="perfil-ti" class="perfil-box hidden">
+                    <div class="dica-item">
+                        <h4>Fadiga Visual (Regra 20-20-20)</h4>
+                        <p>A cada 20 minutos de tela, olhe para algo a 20 pés (6 metros) de distância por 20 segundos.</p>
+                    </div>
+                    <div class="dica-item">
+                        <h4>Pescoço e Ombros</h4>
+                        <p>Com as costas retas, gire os ombros para trás 10 vezes. Depois, incline a cabeça para os lados segurando por 15 segundos.</p>
+                    </div>
+                </div>
+
+                <!-- Perfil Camareira -->
+                <div id="perfil-camareira" class="perfil-box hidden">
+                    <div class="dica-item">
+                        <h4>Alívio Lombar</h4>
+                        <p>Em pé, coloque as mãos na região lombar (fundo das costas) e incline o tronco levemente para trás. Segure por 10 segundos.</p>
+                    </div>
+                    <div class="dica-item">
+                        <h4>Alongamento de Braços</h4>
+                        <p>Estique um braço à frente e puxe os dedos para trás, aliviando a tensão das mãos e antebraços pelo uso de equipamentos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Barra de Navegação Inferior (Menu do App) -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" onclick="mudarAba('tab-agua', this)">
+            <i class="fa-solid fa-glass-water"></i>
+            <span>Água</span>
+        </button>
+        <button class="nav-btn" onclick="mudarAba('tab-timer', this)">
+            <i class="fa-regular fa-clock"></i>
+            <span>Pausas</span>
+        </button>
+        <button class="nav-btn" onclick="mudarAba('tab-exercicios', this)">
+            <i class="fa-solid fa-child-reaching"></i>
+            <span>Corpo</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
